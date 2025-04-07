@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graphic Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/nullstyle.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav>
+          <ul class="menu">
+            <div class="menu__item">
+              <li class="menu__item_label">File</li>
+              <ul class="menu__item_content">
+                <li id="newFile" class="menu__item_label-sub">New File</li>
+                <li id="open" class="menu__item_label-sub">Open</li>
+                <li id="save" class="menu__item_label-sub">Save</li>
+                <li class="menu__item menu__item_label-sub">
+                  Save As
+                  <ul class="submenu">
+                    <li class="submenu__item">PNG</li>
+                    <li class="submenu__item">JSON</li>
+                  </ul>
+                </li>
+                <li id="exit" class="menu__item_label-sub">Exit</li>
+              </ul>
+            </div>
+            <div class="menu__item">
+              <li class="menu__item_label">Edit</li>
+              <ul class="menu__item_content">
+                <li class="menu__item_label-sub">Cut</li>
+                <li class="menu__item_label-sub">Copy</li>
+                <li class="menu__item_label-sub">Paste</li>
+                <li class="menu__item_label-sub">Delete Selected</li>
+                <li class="menu__item_label-sub">Select All</li>
+                <li class="menu__item_label-sub">Paste From File</li>
+              </ul>
+            </div>
+            <div class="menu__item">
+              <li class="menu__item_label">Figures</li>
+              <ul class="menu__item_content">
+                <li class="menu__item_label-sub">Line</li>
+                <li class="menu__item_label-sub">Ellipse</li>
+                <li class="menu__item_label-sub">Rectangle</li>
+              </ul>
+            </div>
+            <div class="menu__item">
+              <li class="menu__item_label">Properties</li>
+              <ul class="menu__item_content">
+                <li
+                  class="menu__item_label-sub color-input__label"
+                  data-target-input="lineColorInput"
+                >
+                  Line Color
+                  <img src="./assets/icons/gestures/tap.png" class="icon" />
+                  <span class="color-circle"></span>
+                  <input class="color-input" type="color" id="lineColorInput" />
+                </li>
+                <li class="menu__item_label-sub">Line Thickness</li>
+                <li
+                  class="menu__item_label-sub color-input__label"
+                  data-target-input="fillColorInput"
+                >
+                  Fill Collor
+                  <img src="./assets/icons/gestures/tap.png" class="icon" />
+                  <span class="color-circle"></span>
+                  <input class="color-input" type="color" id="fillColorInput" />
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <aside class="editor-toolbar">
+          <button
+            class="tool-button"
+            title="Keep selected tool selected after drawing"
+          >
+            <img
+              src="./assets/icons/toolbar/padlock.png"
+              class="toolbar-icon"
+            />
+          </button>
+          <button class="tool-button" title="Hand Tool">
+            <img src="./assets/icons/toolbar/hand.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button active" title="Selection Tool">
+            <img src="./assets/icons/toolbar/cursor.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button" title="Rectangle">
+            <img src="./assets/icons/toolbar/square.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button" title="Diamond">
+            <img
+              src="./assets/icons/toolbar/diamond.png"
+              class="toolbar-icon"
+            />
+          </button>
+          <button class="tool-button" title="Circle">
+            <img src="./assets/icons/toolbar/oval.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button" title="Arrow">
+            <img
+              src="./assets/icons/toolbar/right-arrow.png"
+              class="toolbar-icon"
+            />
+          </button>
+          <button class="tool-button" title="Line">
+            <img src="./assets/icons/toolbar/minus.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button" title="Pencil">
+            <img src="./assets/icons/toolbar/pencil.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button" title="Text">
+            <img src="./assets/icons/toolbar/text.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button" title="Image">
+            <img src="./assets/icons/toolbar/image.png" class="toolbar-icon" />
+          </button>
+          <button class="tool-button" title="Eraser">
+            <img src="./assets/icons/toolbar/eraser.png" class="toolbar-icon" />
+          </button>
+        </aside>
+        <canvas id="canvas"></canvas>
+      </main>
+      <footer></footer>
+      <script src="./js/app.js" type="module"></script>
+    </div>
+  </body>
+</html>
