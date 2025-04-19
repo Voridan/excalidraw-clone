@@ -12,21 +12,21 @@ export const SUPPORTED_TOOLS = [
 
 export const TOOLS_WITH_MENU = SUPPORTED_TOOLS.slice(3);
 
-export const STROKE_COLORS = [
-  "black",
-  "#d64545",
-  "#4caf50",
-  "#3f51b5",
-  "#f29c1f",
-];
+export const STROKE_COLORS_ENUM = {
+  black: "#000000",
+  englishVermillion: "#d64545",
+  greenApple: "#4caf50",
+  violetBlue: "#3f51b5",
+  marigold: "#f29c1f",
+};
 
-export const BACKGROUND_COLORS = [
-  "transparent",
-  "#f8c1c1",
-  "#c1f8c1",
-  "#add8f7",
-  "#fdf0a0",
-];
+export const BACKGROUND_COLORS_ENUM = {
+  transparent: "transparent",
+  spanishPink: "#f8c1c1",
+  teaGreen: "#c1f8c1",
+  cornflowerBlue: "#add8f7",
+  lemonYellow: "#fdf0a0",
+};
 
 export const FILL_STYLE_ENUM = {
   hachure: 1,
