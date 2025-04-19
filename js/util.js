@@ -9,3 +9,7 @@ export const isNear = (p1, p2, threshold = 6) => {
 export const snap = (val, step = 10) => {
   return Math.round(val / step) * step;
 };
+
+export const generateId = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substring(2);
+};

@@ -82,55 +82,128 @@
       </header>
       <main>
         <aside class="editor-toolbar">
-          <button
-            class="tool-button"
-            title="Keep selected tool selected after drawing"
-          >
+          <!-- The radio input is hidden, and the icon is displayed inside the label -->
+          <label class="tool-button">
+            <input type="radio" name="tool" value="lock" hidden />
             <img
               src="./assets/icons/toolbar/padlock.png"
               class="toolbar-icon"
+              alt="Keep selected tool"
+              title="Keep selected tool selected after drawing"
             />
-          </button>
-          <button class="tool-button" title="Hand Tool">
-            <img src="./assets/icons/toolbar/hand.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button active" title="Selection Tool">
-            <img src="./assets/icons/toolbar/cursor.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button" title="Rectangle">
-            <img src="./assets/icons/toolbar/square.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button" title="Diamond">
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="hand" hidden />
+            <img
+              src="./assets/icons/toolbar/hand.png"
+              class="toolbar-icon"
+              alt="Hand tool"
+              title="Hand Tool"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="select" hidden checked />
+            <img
+              src="./assets/icons/toolbar/cursor.png"
+              class="toolbar-icon"
+              alt="Selection tool"
+              title="Selection Tool"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="rectangle" hidden />
+            <img
+              src="./assets/icons/toolbar/square.png"
+              class="toolbar-icon"
+              alt="Rectangle"
+              title="Rectangle"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="diamond" hidden />
             <img
               src="./assets/icons/toolbar/diamond.png"
               class="toolbar-icon"
+              alt="Diamond"
+              title="Diamond"
             />
-          </button>
-          <button class="tool-button" title="Circle">
-            <img src="./assets/icons/toolbar/oval.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button" title="Arrow">
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="ellipse" hidden />
+            <img
+              src="./assets/icons/toolbar/oval.png"
+              class="toolbar-icon"
+              alt="Ellipse"
+              title="Ellipse"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="arrow" hidden />
             <img
               src="./assets/icons/toolbar/right-arrow.png"
               class="toolbar-icon"
+              alt="Arrow"
+              title="Arrow"
             />
-          </button>
-          <button class="tool-button" title="Line">
-            <img src="./assets/icons/toolbar/minus.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button" title="Pencil">
-            <img src="./assets/icons/toolbar/pencil.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button" title="Text">
-            <img src="./assets/icons/toolbar/text.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button" title="Image">
-            <img src="./assets/icons/toolbar/image.png" class="toolbar-icon" />
-          </button>
-          <button class="tool-button" title="Eraser">
-            <img src="./assets/icons/toolbar/eraser.png" class="toolbar-icon" />
-          </button>
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="line" hidden />
+            <img
+              src="./assets/icons/toolbar/minus.png"
+              class="toolbar-icon"
+              alt="Line"
+              title="Line"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="pencil" hidden />
+            <img
+              src="./assets/icons/toolbar/pencil.png"
+              class="toolbar-icon"
+              alt="Pencil"
+              title="Pencil"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="text" hidden />
+            <img
+              src="./assets/icons/toolbar/text.png"
+              class="toolbar-icon"
+              alt="Text"
+              title="Text"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="image" hidden />
+            <img
+              src="./assets/icons/toolbar/image.png"
+              class="toolbar-icon"
+              alt="Image"
+              title="Image"
+            />
+          </label>
+
+          <label class="tool-button">
+            <input type="radio" name="tool" value="eraser" hidden />
+            <img
+              src="./assets/icons/toolbar/eraser.png"
+              class="toolbar-icon"
+              alt="Eraser"
+              title="Eraser"
+            />
+          </label>
         </aside>
+        <div class="menu__container"></div>
         <canvas id="canvas"></canvas>
       </main>
       <footer></footer>

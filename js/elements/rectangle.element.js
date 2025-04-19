@@ -1,4 +1,4 @@
-import BaseElement from './base.element.js';
+import BaseElement from "./base.element.js";
 
 export class Rectangle extends BaseElement {
   /**
@@ -32,7 +32,7 @@ export class Rectangle extends BaseElement {
 
     ctx.strokeStyle = this.strokeProps.color;
     ctx.lineWidth = this.strokeProps.width;
-    ctx.setLineDash(this.strokeProps.style === 'dashed' ? [6, 4] : []);
+    ctx.setLineDash(this.strokeProps.style === "dashed" ? [6, 4] : []);
     ctx.strokeRect(
       this.origin.x,
       this.origin.y,
@@ -51,7 +51,7 @@ export class Rectangle extends BaseElement {
    */
   drawResizeHandles = (ctx) => {
     const handles = this.getResizeHandles();
-    ctx.fillStyle = '#000';
+    ctx.fillStyle = "#000";
     for (const h of handles) {
       ctx.fillRect(h.x - 4, h.y - 4, 8, 8);
     }

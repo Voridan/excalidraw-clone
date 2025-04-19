@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .wrapper {
   width: 100%;
@@ -11,6 +11,7 @@ body {
 }
 header {
   background-color: #f8fafc;
+  z-index: 60;
 }
 main {
   flex: 1 1 auto;
@@ -21,7 +22,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 40;
 }
 .menu {
   display: flex;
@@ -102,17 +103,21 @@ main {
   pointer-events: none;
 }
 
+/* Your existing styles */
 .editor-toolbar {
-  margin-top: 10px;
-  margin-left: 10px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   display: grid;
   width: 40px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   padding: 6px;
   gap: 4px;
   justify-content: center;
+  z-index: 50;
 }
 
 .tool-button {
@@ -128,15 +133,192 @@ main {
   background-color: #f8fafc;
 }
 
-.tool-button:hover {
-  background-color: #f0f0f0;
+/* Fallback, you could also use an inner element indicator, but if your target browsers support :has() */
+.tool-button:has(input:checked) {
+  background-color: #bcccdc;
 }
 
-.tool-button.active {
-  background-color: #bcccdc;
+.tool-button:hover {
+  background-color: #f0f0f0;
 }
 
 .toolbar-icon {
   width: 20px;
   height: 20px;
+}
+
+.menu__container {
+  padding: 15px;
+  position: absolute;
+  z-index: 50;
+  top: 50%;
+  left: 70px;
+  transform: translateY(-50%);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 10px;
+  display: none;
+}
+.menu__container.show {
+  display: block;
+}
+
+.menu-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.option {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.option.selected {
+  border-color: #5c6ac4;
+  background-color: #eef0ff;
+}
+
+.stroke {
+  background-color: currentColor;
+}
+
+.background {
+  background-color: currentColor;
+}
+
+.transparent {
+  background: repeating-conic-gradient(#ccc 0% 25%, transparent 0% 50%) 50% /
+    10px 10px;
+}
+
+.fill-icon {
+  width: 18px;
+  height: 18px;
+  background-repeat: repeat;
+}
+
+.fill-solid {
+  background-color: black;
+}
+.fill-hachure {
+  background-image: repeating-linear-gradient(
+    45deg,
+    black 0 2px,
+    transparent 2px 4px
+  );
+}
+.fill-cross_hatch {
+  background-image: radial-gradient(black 1.5px, transparent 1.5px);
+  background-size: 6px 6px;
+}
+
+.stroke-width-icon {
+  width: 18px;
+  height: 2px;
+  background-color: black;
+}
+
+.stroke-width-thin {
+  height: 1px;
+}
+.stroke-width-bold {
+  height: 2px;
+}
+.stroke-width-extra_bold {
+  height: 4px;
+}
+
+.stroke-style-solid {
+  width: 18px;
+  height: 2px;
+  background-color: black;
+}
+
+.stroke-style-dashed {
+  width: 18px;
+  height: 2px;
+  border-bottom: 2px dashed black;
+  background: none;
+}
+
+.stroke-style-dotted {
+  width: 18px;
+  height: 2px;
+  border-bottom: 2px dotted black;
+  background: none;
+}
+
+.edge-icon {
+  width: 24px;
+  height: 24px;
+  border: 2px dashed black;
+  color: #1e1e3f;
+}
+
+.edge-sharp {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-top-left-radius: 0;
+}
+
+.edge-round {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-top-left-radius: 6px;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #d8d8ff;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+  border: none;
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+  border: none;
+}
+
+.slider-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
 }
