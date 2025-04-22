@@ -185,11 +185,15 @@ main {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  overflow: hidden;
 }
 
-.option.selected {
-  border-color: #5c6ac4;
-  background-color: #eef0ff;
+.option.selected-border {
+  border: 2px solid #3fe2d7;
+}
+
+.option.selected-background {
+  background-color: #a6bfdad1;
 }
 
 .stroke {

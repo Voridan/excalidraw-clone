@@ -1,16 +1,16 @@
-export const SUPPORTED_TOOLS = [
-  "lock",
-  "hand",
-  "select",
-  "rectangle",
-  "diamond",
-  "ellipse",
-  "arrow",
-  "line",
-  "pencil",
-];
+export const SUPPORTED_TOOLS = {
+  lock: 1,
+  hand: 2,
+  select: 3,
+  rectangle: 4,
+  diamond: 5,
+  ellipse: 6,
+  arrow: 7,
+  line: 8,
+  pencil: 9,
+};
 
-export const TOOLS_WITH_MENU = SUPPORTED_TOOLS.slice(3);
+export const TOOLS_WITH_MENU = Object.keys(SUPPORTED_TOOLS).slice(3);
 
 export const STROKE_COLORS_ENUM = {
   black: "#000000",

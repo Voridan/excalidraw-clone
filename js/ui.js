@@ -37,7 +37,6 @@ const selectedStyleMap = new Map([
   ["selectedEdgeStyle", EDGES_STYLE_ENUM.sharp],
   ["selectedArrowType", ARROW_TYPE_ENUM.sharp_arrow],
 ]);
-console.log(selectedStyleMap);
 
 document.querySelectorAll('input[name="tool"]').forEach((input) => {
   input.addEventListener("change", (e) => {
@@ -122,15 +121,21 @@ const renderMenuStrokeRow = () => {
   title.textContent = "Stroke";
 
   const options = document.createElement("div");
-  options.className = "options";
+  options.className = "options stroke-colors";
 
   [...Object.values(STROKE_COLORS_ENUM)].forEach((color) => {
     const option = document.createElement("div");
     option.className = "option stroke";
     option.style.color = color;
     if (color === selectedStyleMap.get("selectedStrokeColor")) {
-      option.classList.add("selected");
+      option.classList.add("selected-border");
     }
+
+    option.addEventListener("click", (e) => {
+      selectedStyleMap.set("selectedStrokeColor", color);
+      renderToolMenu(canvas.selectedTool);
+    });
+
     options.appendChild(option);
   });
 
@@ -149,15 +154,28 @@ const renderMenuBackgroundRow = () => {
   bgTitle.textContent = "Background";
 
   const bgOptions = document.createElement("div");
-  bgOptions.className = "options";
+  bgOptions.className = "options background-colors";
 
   [...Object.values(BACKGROUND_COLORS_ENUM)].forEach((color) => {
     const option = document.createElement("div");
     option.className = "option background";
-    if (color === "transparent") option.classList.add("transparent");
-    if (color === selectedStyleMap.get("selectedBackgroundColor"))
-      option.classList.add("selected");
-    if (color !== "transparent") option.style.color = color;
+    if (color === "transparent") {
+      option.classList.add("transparent");
+    }
+
+    if (color === selectedStyleMap.get("selectedBackgroundColor")) {
+      option.classList.add("selected-border");
+    }
+
+    if (color !== "transparent") {
+      option.style.color = color;
+    }
+
+    option.addEventListener("click", (e) => {
+      selectedStyleMap.set("selectedBackgroundColor", color);
+      renderToolMenu(canvas.selectedTool);
+    });
+
     bgOptions.appendChild(option);
   });
 
@@ -176,7 +194,7 @@ const renderMenuFillRow = () => {
   fillTitle.textContent = "Fill";
 
   const fillOptions = document.createElement("div");
-  fillOptions.className = "options";
+  fillOptions.className = "options fill-style";
 
   Object.keys(FILL_STYLE_ENUM).forEach((fillStyle) => {
     const option = document.createElement("div");
@@ -184,12 +202,17 @@ const renderMenuFillRow = () => {
     if (
       FILL_STYLE_ENUM[fillStyle] === selectedStyleMap.get("selectedFillStyle")
     )
-      option.classList.add("selected");
+      option.classList.add("selected-background");
 
     const fillIcon = document.createElement("div");
     fillIcon.className = `fill-icon fill-${fillStyle}`;
 
     option.appendChild(fillIcon);
+    option.addEventListener("click", (e) => {
+      selectedStyleMap.set("selectedFillStyle", FILL_STYLE_ENUM[fillStyle]);
+      renderToolMenu(canvas.selectedTool);
+    });
+
     fillOptions.appendChild(option);
   });
 
@@ -208,7 +231,7 @@ const renderMenuStrokeWidthRow = () => {
   strokeWidthTitle.textContent = "Stroke width";
 
   const strokeWidthOptions = document.createElement("div");
-  strokeWidthOptions.className = "options";
+  strokeWidthOptions.className = "options stroke-width";
 
   Object.keys(STROKE_WIDTH_ENUM).forEach((strokeWidth) => {
     const option = document.createElement("div");
@@ -216,13 +239,22 @@ const renderMenuStrokeWidthRow = () => {
     if (
       STROKE_WIDTH_ENUM[strokeWidth] ===
       selectedStyleMap.get("selectedStrokeWidth")
-    )
-      option.classList.add("selected");
+    ) {
+      option.classList.add("selected-background");
+    }
 
     const icon = document.createElement("div");
     icon.className = `stroke-width-icon stroke-width-${strokeWidth}`;
 
     option.appendChild(icon);
+    option.addEventListener("click", (e) => {
+      selectedStyleMap.set(
+        "selectedStrokeWidth",
+        STROKE_WIDTH_ENUM[strokeWidth]
+      );
+      renderToolMenu(canvas.selectedTool);
+    });
+
     strokeWidthOptions.appendChild(option);
   });
 
@@ -241,7 +273,7 @@ const renderMenuStrokeStyleRow = () => {
   strokeStyleTitle.textContent = "Stroke style";
 
   const strokeStyleOptions = document.createElement("div");
-  strokeStyleOptions.className = "options";
+  strokeStyleOptions.className = "options stroke-style";
 
   Object.keys(STROKE_STYLE_ENUM).forEach((strokeStyle) => {
     const option = document.createElement("div");
@@ -249,13 +281,22 @@ const renderMenuStrokeStyleRow = () => {
     if (
       STROKE_STYLE_ENUM[strokeStyle] ===
       selectedStyleMap.get("selectedStrokeStyle")
-    )
-      option.classList.add("selected");
+    ) {
+      option.classList.add("selected-background");
+    }
 
     const icon = document.createElement("div");
     icon.className = `stroke-style-${strokeStyle}`;
 
     option.appendChild(icon);
+    option.addEventListener("click", (e) => {
+      selectedStyleMap.set(
+        "selectedStrokeStyle",
+        STROKE_STYLE_ENUM[strokeStyle]
+      );
+      renderToolMenu(canvas.selectedTool);
+    });
+
     strokeStyleOptions.appendChild(option);
   });
 
@@ -274,17 +315,23 @@ const renderMenuArrowTypeRow = () => {
   arrowTitle.textContent = "Arrow type";
 
   const arrowOptions = document.createElement("div");
-  arrowOptions.className = "options";
+  arrowOptions.className = "options arrow-type";
 
   Object.keys(ARROW_TYPE_ENUM).forEach((arrowType) => {
     const option = document.createElement("div");
     option.className = "option";
     if (
       ARROW_TYPE_ENUM[arrowType] === selectedStyleMap.get("selectedArrowType")
-    )
-      option.classList.add("selected");
+    ) {
+      option.classList.add("selected-background");
+    }
 
     option.innerHTML = ARROWS_SVGs[ARROW_TYPE_ENUM[arrowType]];
+    option.addEventListener("click", (e) => {
+      selectedStyleMap.set("selectedArrowType", ARROW_TYPE_ENUM[arrowType]);
+      renderToolMenu(canvas.selectedTool);
+    });
+
     arrowOptions.appendChild(option);
   });
 
@@ -303,18 +350,24 @@ const renderMenuEdgesRow = () => {
   edgeTitle.textContent = "Edges";
 
   const edgeOptions = document.createElement("div");
-  edgeOptions.className = "options";
+  edgeOptions.className = "options edges-style";
 
   Object.keys(EDGES_STYLE_ENUM).forEach((edge) => {
     const option = document.createElement("div");
-    option.className = "option";
+
+    option.className = `option`;
     if (EDGES_STYLE_ENUM[edge] === selectedStyleMap.get("selectedEdgeStyle"))
-      option.classList.add("selected");
+      option.classList.add("selected-background");
 
     const icon = document.createElement("div");
     icon.className = `edge-icon edge-${edge}`;
 
     option.appendChild(icon);
+    option.addEventListener("click", (e) => {
+      selectedStyleMap.set("selectedEdgeStyle", EDGES_STYLE_ENUM[edge]);
+      renderToolMenu(canvas.selectedTool);
+    });
+
     edgeOptions.appendChild(option);
   });
 
@@ -342,6 +395,7 @@ const renderMenuOpacityRow = () => {
   slider.min = "0";
   slider.max = "100";
   slider.value = "100";
+  slider.step = 10;
   slider.className = "slider";
   slider.id = "opacitySlider";
   sliderContainer.appendChild(slider);
